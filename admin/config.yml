@@ -1,5 +1,8 @@
 backend:
-  name: github
+  name: git-gateway
+  accept_roles: #optional - accepts all users if left out
+    - admin
+    - editor
   branch: master # Branch to update (optional; defaults to master)
   repo: pebutler3/netlify-cms-test
 
