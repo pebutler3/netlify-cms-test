@@ -14,6 +14,7 @@ collections:
     label: "Posts" # Used in the UI
     folder: "_posts" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
+    delete: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template i.e. YYYY-MM-DD-title.md
     filter:
       - field: publication_url
@@ -27,3 +28,29 @@ collections:
       - {label: "Tags", name: "tags", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Publication URL", name: "publication_url", widget: "string"}
+  - name: "home" # Used in routes, e.g. /admin/collections/blog
+    label: "Home Page" # Used in the UI
+    folder: "_homepage" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slub: 'home'
+    filter:
+      - field: publication_url
+      - value: ""
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "default"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "image", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Publication URL", name: "publication_url", widget: "string"}
+      - label: "Testimonials"
+        name: "testimonials"
+        widget: "list"
+        fields:
+          - {label: Quote, name: quote, widget: string, default: "Everything is awesome!"}
+          - label: Author
+            name: author
+            widget: object
+            fields:
+              - {label: Name, name: name, widget: string, default: "Emmet"}
+              - {label: Avatar, name: avatar, widget: image, default: "/img/emmet.jpg"}
